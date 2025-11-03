@@ -187,6 +187,10 @@ public final class DocInfoModelConverter implements IInfoModelConverter {
         return null;
     }
     
+    public String getPvtdate(){
+        return model.getPvtdate();
+    }
+    
     // 患者氏名
     public String getPatientName() {
         return model.getPatientName();
