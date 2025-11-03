@@ -38,6 +38,7 @@ import open.dolphin.util.ZenkakuUtils;
 import java.text.SimpleDateFormat;//以下追加
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.logging.Level;
 import javax.swing.text.Segment;
 
 
@@ -2053,7 +2054,15 @@ public class KarteEditor extends AbstractChartDocument implements IInfoModel, NC
                     DocumentDelegater ddl = new DocumentDelegater();                  
  //masuda^                   
                     // 外来待合リスト以外から開いた場合はpvt.id = 0である
-                    PatientVisitModel pvt = chart.getPatientVisit();
+                    PatientVisitModel pvt = chart.getPatientVisit();                    
+                    //inox pvtdate を直接渡す
+                    String pvtdate =pvt.getPvtDate();
+                    if(pvtdate == null){
+                        //do nothing?
+                    }else{
+                        model.getDocInfoModel().setPvtdate(pvtdate);
+                        Logger.getLogger("open.ocean").log(Level.INFO, "pvtdate:{0}", pvtdate);
+                    }
  
                     if (sendClaim && pvt.getId()!=0L && !pvt.isFromSchedule()) {
  

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 /**
  * DocInfoModel
@@ -164,6 +164,9 @@ public class DocInfoModel extends InfoModel
     // 診断に適用した健康保険
     @Transient
     private PVTHealthInsuranceModel pVTHealthInsuranceModel;
+    
+    @Transient
+    private String pvtdate;
     
     // 施設（病院）名
     @Transient
@@ -672,6 +675,16 @@ public class DocInfoModel extends InfoModel
     public void setPVTHealthInsuranceModel(PVTHealthInsuranceModel selectedInsurance) {
         this.setpVTHealthInsuranceModel(selectedInsurance);
     }
+
+    public String getPvtdate() {
+        return pvtdate;
+    }
+
+    public void setPvtdate(String pvtdate) {
+        this.pvtdate = pvtdate;
+    }
+    
+    
 
     public String getFacilityName() {
         return facilityName;
